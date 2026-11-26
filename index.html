@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart AI Interview Coach</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">AI</div>
+          <div>
+            <h1>Smart AI Interview Coach</h1>
+            <p>Emotion, voice, resume, and answer analysis</p>
+          </div>
+        </div>
+
+        <label>
+          Target role
+          <select id="roleSelect"></select>
+        </label>
+
+        <label>
+          Resume text
+          <textarea id="resumeText" placeholder="Paste your resume text here, or load a .txt/.md file."></textarea>
+        </label>
+
+        <div class="row">
+          <label class="fileButton">
+            Upload resume
+            <input id="resumeFile" type="file" accept=".txt,.md,.csv,.json" />
+          </label>
+          <button id="analyzeResumeBtn">Analyze Resume</button>
+        </div>
+
+        <div id="resumeResult" class="result compact"></div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Mock interview room</p>
+            <h2 id="questionText">Generate a role-specific question to begin.</h2>
+          </div>
+          <button id="questionBtn">New Question</button>
+        </header>
+
+        <section class="interviewGrid">
+          <div class="panel videoPanel">
+            <div class="panelHeader">
+              <h3>Emotion and posture</h3>
+              <div class="status" id="cameraStatus">Camera off</div>
+            </div>
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="frameCanvas" width="240" height="160"></canvas>
+            <div class="toolbar">
+              <button id="cameraBtn">Start Camera</button>
+              <button id="emotionBtn">Analyze Frame</button>
+            </div>
+            <div id="emotionResult" class="metricGrid"></div>
+          </div>
+
+          <div class="panel answerPanel">
+            <div class="panelHeader">
+              <h3>Answer practice</h3>
+              <div class="status" id="speechStatus">Speech idle</div>
+            </div>
+            <textarea id="answerText" placeholder="Speak or type your answer here. Try STAR: situation, task, action, result."></textarea>
+            <div class="toolbar">
+              <button id="recordBtn">Start Voice</button>
+              <button id="stopRecordBtn">Stop Voice</button>
+              <button id="answerBtn">Analyze Answer</button>
+            </div>
+            <div id="voiceResult" class="metricGrid"></div>
+            <div id="answerResult" class="result"></div>
+          </div>
+        </section>
+
+        <section class="panel reportPanel">
+          <div class="panelHeader">
+            <h3>Final readiness report</h3>
+            <button id="reportBtn">Build Report</button>
+          </div>
+          <div id="reportResult" class="report"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
